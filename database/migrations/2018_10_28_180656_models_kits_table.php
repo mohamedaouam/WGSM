@@ -17,13 +17,9 @@ class ModelsKitsTable extends Migration
         if(!Schema::hasTable("modelKits"))
             Schema::create('modelsKits', function (Blueprint $table) {
                 $table->increments('id_kit');
-                $table->integer('bonus')->default(0);
-                $table->string('type')->default("%");
                 $table->unsignedInteger('id_model');
                 $table->unsignedInteger('id_objet');
-                $table->string('qte')->default('1');
-                $table->string('nom');
-                $table->string('description')->default('');
+                $table->string('F',125);
                 $table->boolean('visible')->default(true);
                 $table->rememberToken();
                 $table->timestamps();

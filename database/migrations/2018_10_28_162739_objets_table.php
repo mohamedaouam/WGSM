@@ -21,8 +21,9 @@ class ObjetsTable extends Migration
                 $table->string('prix');
                 $table->integer('enStock')->default(0);
                 $table->string('nom');
-                $table->string('image')->default('objet.png');
+                $table->string('image')->default('objet.png'); 
                 $table->string('description')->default('');
+                $table->string('categorie',25)->default('AUTRE');
                 $table->boolean('visible')->default(true);
                 $table->rememberToken();
                 $table->timestamps();
