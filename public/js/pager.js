@@ -12,22 +12,27 @@ function whereImI() {
 		if (splitedUri[i] == "Home") {
 			home.setAttribute('class', 'nav-item active');
 			$('li#home a').append("<span class='sr-only'>(current)</span>")
+			break
 		}
 		if (splitedUri[i] == "Factures") {
 			factures.setAttribute('class', 'nav-item active');
 			$('li#factures a').append("<span class='sr-only'>(current)</span>")
+			break
 		}
 		if (splitedUri[i] == "Stocks") {
 			stocks.setAttribute('class', 'nav-item active');
 			$('li#stocks a').append("<span class='sr-only'>(current)</span>")
+			break
 		}
 		if (splitedUri[i] == "Models") {
 			models.setAttribute('class', 'nav-item active');
 			$('li#models a').append("<span class='sr-only'>(current)</span>")
+			break
 		}
 		if (splitedUri[i] == "Clients") {
 			clients.setAttribute('class', 'nav-item active');
 			$('li#clients a').append("<span class='sr-only'>(current)</span>")
+			break
 		}
 	}
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class FacturesTable extends Migration
+class Proformatobjets extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,18 @@ class FacturesTable extends Migration
      */
     public function up()
     {
-        //  
-        if(!Schema::hastable("factures"))
+        //
+        if(!Schema::hastable("proFormatObjets"))
 
-            Schema::create('factures', function (Blueprint $table) {
-                $table->increments('id_facture');
-                $table->string('ref')->unique();
-                $table->boolean('valider')->default(false);
+            Schema::create('proFormatObjets', function (Blueprint $table) {
+                $table->increments('id_proFormat');
+                $table->string('ref',191)->unique();
                 $table->boolean('payer')->default(false);
-                $table->boolean('livre')->default(false);
                 $table->string('montant');
-                $table->integer('reduction')->default(0);
+                $table->string('montantOriginal');
+                $table->string('reduction');
                 $table->unsignedInteger('id_client');
                 $table->unsignedInteger('id_user');
-                $table->boolean('visible')->default(true);
-
                 $table->rememberToken();
                 $table->timestamps();
 

@@ -76,9 +76,7 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text" onclick="to()" id="">{{$kit->getRef()}}</span>
 				</div>
-				<input type="text" name="X[]" value="{{$kit->X}}" class="form-control">
-				<input type="text" name="Y[]" value="{{$kit->Y}}" class="form-control">
-				<input type="text" name="Z[]" value="{{$kit->Z}}" class="form-control">
+				<input type="text" name="X[]" value="{{$kit->F}}" class="form-control">
 				<input type="hidden" name="id_obj[]" value="{{$kit->id_objet}}">
 				<div class="input-group-append">
 					<button class="btn btn-outline-danger" onclick="removeMe()" type="button"><span class="icon icon-times"></span></button>
@@ -86,14 +84,15 @@
 			</div>
 			@endforeach
 		</div>
-        <div class="col-10 row mx-auto">
+		<div class="col-10 row mx-auto">
 			<div class="input-group col-12 mb-2">
 				<div class="input-group-prepend">
 					<span class="input-group-text" id="">Categorie : </span>
 				</div>
+				
 				<select name="nothing"  class="custom-select" id="categories">
 					@foreach($MODEL->getAvailableCategories() as $cat)
-					  <option value="{{ $cat->categorie }}">{{$cat->categorie }}</option>
+					<option value="{{ $cat->categorie }}">{{$cat->categorie}}</option>
 					@endforeach
 				</select>
 				<div class="input-group-append">
@@ -103,14 +102,14 @@
 		</div>
 		<div class="col-12 row" id="cats">
 			@foreach($MODEL->getCategories() as $cat)
-			<div class="input-group col-12 mb-2">
+			<div class="input-group col-12 mb-2" id="{{$cat->categorie}}">
 				<div class="input-group-prepend">
 					<span class="input-group-text" >{{$cat->categorie}}</span>
 				</div>
 				<input type="text" name="formules[]" value="{{$cat->formule}}" class="form-control">
 				<input type="hidden" name="categories[]" value="{{$cat->categorie}}">
 				<div class="input-group-append">
-					<button class="btn btn-outline-danger" onclick="catRemoveMe($(this))" type="button"><span class="icon icon-times"></span></button>
+					<button class="btn btn-outline-danger" id="{{$cat->categorie}}" onclick="catRemoveMe($(this))" type="button"><span class="icon icon-times"></span></button>
 				</div>
 			</div>
 			@endforeach
@@ -145,8 +144,9 @@
 	}
 	function catRemoveMe(t){
 		id = t.attr('id')
+		
 		option = "<option value='"+id+"'>"+id+"</option>";
-		$('#categories').append(option)
+		//$('#categories').append(option)
 		$('#'+id).remove();
 
 	}
@@ -155,8 +155,8 @@
 		div = "<div class='input-group col-12 mb-2' id='"+id+"'>"+"<div class='input-group-prepend'>"
 		+"<span class='input-group-text'>"+id+"</span>"+
 		"</div>"+
-		"<input type='text' name='formules[]' value='1' class='form-control'>"+
-		"<input type='hidden' name='categories[]' value='"+id+"'>"+
+		"<input type='text' name='formules[]' value='X' class='form-control'>"+
+		"<input type='hidden' name='categories[]'  value='"+id+"'>"+
 		"<div class='input-group-append'>"+
 		"<button class='btn btn-outline-danger' id='"+id+"' onclick='catRemoveMe($(this))' type='button'><span class='icon icon-times'></span></button>"+
 		"</div>"+
@@ -172,8 +172,6 @@
 		+"<span class='input-group-text'>"+ref+"</span>"+
 		"</div>"+
 		"<input type='text' name='X[]' value='1' class='form-control'>"+
-		"<input type='text' name='Y[]' value='0' class='form-control'>"+
-		"<input type='text' name='Z[]' value='0' class='form-control'>"+
 		"<input type='hidden' name='id_obj[]' value='"+id+"'>"+
 		"<div class='input-group-append'>"+
 		"<button class='btn btn-outline-danger' id='"+id+"' onclick='removeMe($(this))' type='button'><span class='icon icon-times'></span></button>"+

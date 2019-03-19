@@ -12,14 +12,22 @@ class Composer extends Model
 		$kit = \App\Modelskit::where('id_objet',$id)->where('id_model',$this->id_model)->first();
 		if($kit == null)
 			return false;
-		return true;
+		return true; 
 	}
 	public function getAvailableCategories(){
+		$cats = null;
+		$cats = \App\ModelCategorie::select('categorie')->where('id_model',$this->id_model)->get();
 		$data = array();
-		foreach ($this->getKits() as $kit ) {
-			array_push($data, $kit->getCategorie());
+		foreach (\App\Objet::select('categorie')->where('visible',"1")->distinct()->get() as $kit ) {
+			if(is_array($cats)){
+				if(!in_array($kit, $cats)){
+					array_push($data, $kit);
+				}
+			}else{
+				array_push($data, $kit);
+			}
 		}
-		return \App\Objet::select('categorie')->where('visible',"1")->whereNotIn('categorie',$data)->distinct()->get();
+		return $data;
 	}
 	public function getKitsObjetID(){
 		$kits = $this->getKits();

@@ -38,8 +38,8 @@
 @endsection
 
 @section('content')
-<div class="col-11 mx-auto pt-3">
-	<ul class="nav nav-tabs text-center mx-auto col-8" id="tabb">
+<div class="col-12 mx-auto pt-3">
+	<ul class="nav nav-tabs text-center mx-auto col-10" id="tabb">
 		<li class="nav-item"><a class="nav-link active" data-toggle="tab"
 			href="#ListObjets"><span class="icon icon-users"></span> List
 		Objets</a></li>
@@ -53,7 +53,7 @@
 
 	</ul>
 	<div
-	class="tab-content col-8 mx-auto border py-2 border-top-0 rounded-bottom">
+	class="tab-content col-10 mx-auto border py-2 border-top-0 rounded-bottom">
 	<div class="tab-pane fade show active row" id="ListObjets"
 	role="tabpanel" aria-labelledby="listClients-tab">
 
