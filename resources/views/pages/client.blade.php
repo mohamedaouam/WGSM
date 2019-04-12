@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-<div class="col-10 mx-auto row mt-2 p-1">
+<div class="col-11 mx-auto row mt-2 p-1">
 	<form action="{{Route('upClient')}}" method="POST" class="col-11 mx-auto my-1 row">
 		<input type="hidden" name="id" value="{{$CLIENT->id_client}}">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">

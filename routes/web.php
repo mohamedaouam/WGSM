@@ -42,7 +42,7 @@ Route::post('/Model/Update', 'WiGSV@upModel')->name('upModel');
 Route::post('/Objet', 'WiGSV@upObjet')->name('upObjet');
 Route::post('/ElementO', 'WiGSV@addEl')->name('addEl');
 // get requests
-Route::get('/Factures', 'WiGSV@factures')->name('factures');
+Route::get('/Factures/Objets', 'WiGSV@factures')->name('factures');
 Route::get('/Stocks', 'WiGSV@stocks')->name('stocks');
 Route::get('/Models', 'WiGSV@models')->name('models');
 Route::get('/ElementO/{id}', 'WiGSV@delEl')->name('delEl');
@@ -51,7 +51,7 @@ Route::get('/Clients', 'WiGSV@clients')->name('clients');
 Route::get('/DeleteClient/{id}','WiGSV@delClient')->name('deleteC');
 Route::get('/DeleteObjet/{id}','WiGSV@delObjet')->name('deleteO');
 Route::get('/Model/{id}/Delete', 'WiGSV@delModel')->name('delModel');
-
+Route::get('/Factures/Models', 'WiGSV@facturesM')->name('facturesM');
 
 Route::get('/Client/{id}/{name}','WiGSV@client')->name('client');
 Route::get('/Objet/{id}/{name}','WiGSV@objet')->name('objet');

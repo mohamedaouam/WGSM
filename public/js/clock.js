@@ -5,7 +5,7 @@ function startTime() {
     var s = today.getSeconds();
     m = checkTime(m);
     s = checkTime(s);
-    document.getElementById('DT').innerHTML = "<span class=\"icon icon-clock-o\"></span>"+ h + ":" + m + ":" + s;
+    document.getElementById('DT').innerHTML = "<span class=\"icon icon-clock-o col-1 float-left\"></span>"+ h + ":" + m + ":" + s;
     var t = setTimeout(startTime, 500);
 }
 function checkTime(i) {
