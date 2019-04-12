@@ -52,11 +52,13 @@ Route::get('/DeleteClient/{id}','WiGSV@delClient')->name('deleteC');
 Route::get('/DeleteObjet/{id}','WiGSV@delObjet')->name('deleteO');
 Route::get('/Model/{id}/Delete', 'WiGSV@delModel')->name('delModel');
 Route::get('/Factures/Models', 'WiGSV@facturesM')->name('facturesM');
+
 Route::get('/ProFormat/Models', 'WiGSV@facturesPF')->name('PFModels');
 Route::get('/ProFormat/Objets', 'WiGSV@facturesPF')->name('PFObjets');
 Route::get('/Factures/Models/Nouvelle', 'WiFacture@newFM')->name('newFM');
 Route::get('/Models/getdata', 'WiFacture@getmodeldata')->name('getmodeldata');
 Route::get('/Models/getobjetbycat', 'WiFacture@getobjetbycat')->name('getobjetbycat');
+
 
 Route::get('/Client/{id}/{name}','WiGSV@client')->name('client');
 Route::get('/Objet/{id}/{name}','WiGSV@objet')->name('objet');

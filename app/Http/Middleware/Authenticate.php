@@ -14,46 +14,46 @@ class Authenticate extends Middleware
      */
     protected $devices = ["127.0.0.1"=>"WiGSV SERVER"];
     protected function check($mac){
-        if(in_array($mac, $this->alw))
-            return true;
-        return false;
+    	if(in_array($mac, $this->alw))
+    		return true;
+    	return false;
     }
     
     protected function makeMyCookie($device)
     {
-        return Cookie::queue(Cookie::make('device', $device, 1440));
+    	return Cookie::queue(Cookie::make('device', $device, 1440));
     }
     protected function cook($request){
-        $ip = $request->ip();
-        $mac = $ip;
-        if(Cookie::get('device')==null){
+    	$ip = $request->ip();
+    	$mac = $ip;
+    	if(Cookie::get('device')==null){
 
-            if($ip != "127.0.0.1"){
-                $macCommandString   =   "arp -a " . $ip ;
-                $r = exec($macCommandString);
-                $rs = explode(' ', $r);
-                foreach ($rs as $s) {
-                    if(substr_count($s, '-') == 5){
-                        $mac = $s;
-                    }
-                }
+    		if($ip != "127.0.0.1"){
+    			$macCommandString   =   "arp -a " . $ip ;
+    			$r = exec($macCommandString);
+    			$rs = explode(' ', $r);
+    			foreach ($rs as $s) {
+    				if(substr_count($s, '-') == 5){
+    					$mac = $s;
+    				}
+    			}
 
-            }
-            else{
-                $mac = $ip;
-
-
-            }
-            if(array_key_exists($mac, $this->devices))
-                $this->makeMyCookie($this->devices[$mac]);
+    		}
+    		else{
+    			$mac = $ip;
 
 
-        }
-        return $mac;
+    		}
+    		if(array_key_exists($mac, $this->devices))
+    			$this->makeMyCookie($this->devices[$mac]);
+
+
+    	}
+    	return $mac;
     }
     protected function redirectTo($request)
     {
-     $this->cook($request);
-     return route('login');
- }
+    	$this->cook($request);
+    	return route('login');
+    }
 }
